@@ -189,7 +189,7 @@ nmap <leader>fT <Action>(ActivateTerminalToolWindow)
 " Terminal (Root Dir)
 nmap <C-/> <Action>(ActivateTerminalToolWindow)
 " nmap <C-_> 'There is no equivalent mapping for <c-_>.'<cr>
-" Hide Terminal - terminal mode maps not possible
+" Hide Terminal - terminal Mode maps not possible
 " Split Window Below.  :split<cr> doesn't work.
 nmap <leader>- <c-w>s
 " Split Window Right
@@ -475,17 +475,6 @@ nmap <leader>gq <Action>(HideActiveWindow)
 nmap <C-o> <Action>(Back)
 nmap <C-i> <Action>(Forward)
 map <leader>fa <action>(GotoAction)
-" Verschiebt den Editor nach links
-nmap <leader>wh <Action>(TabMover.MoveTabLeft)
-
-" Verschiebt den Editor nach rechts
-nmap <leader>wl <Action>(TabMover.MoveTabRight)
-
-" Verschiebt den Editor nach oben (vertikal)
-nmap <leader>wk <Action>(TabMover.MoveTabUp)
-
-" Verschiebt den Editor nach unten (vertikal)
-nmap <leader>wj <Action>(TabMover.MoveTabDown)
 map gm :action FileStructurePopup<CR>
 map <leader>gm :action FileStructurePopup<CR>
 vnoremap J :m '>+1<CR>gv=gv
@@ -503,7 +492,6 @@ imap jj <Esc>
 nmap <leader>dv <Action>(ActivateDatabaseToolWindow)
 xnoremap <leader>p "_d
 vmap <leader>cw <Action>(SurroundWith)
-
 
 " Window splits
 map <leader>ww <Action>(Unsplit)

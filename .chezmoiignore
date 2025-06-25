@@ -1,0 +1,27 @@
+
+# Plugin-Lockfiles, die ständig wechseln
+.config/nvim/lazy-lock.json
+.config/nvim/plugged/*
+.config/nvim/site/autoload/plug.vim
+.config/nvim/site/pack/*
+
+# LSP/TreeSitter Cache & generierte Daten
+.config/nvim/.netrwhist
+.config/nvim/shada/*
+.config/nvim/undo/*
+.config/nvim/swap/*
+.config/nvim/session/*
+
+# Sonstige temporäre oder systemabhängige Dateien
+.config/nvim/.log
+.config/nvim/*.log
+.config/nvim/.DS_Store
+
+# VSCode (Beispiel, falls du das auch managst)
+.config/Code/User/workspaceStorage/
+.config/Code/User/globalStorage/
+.config/Code/User/History/
+.config/Code/User/Backups/
+
+# Mac-spezifisch
+.DS_Store
