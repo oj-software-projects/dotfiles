@@ -1,0 +1,31 @@
+    {
+        "workbench.colorTheme": "Def   ult Dark Modern",
+        "terminal.integrated.enableMultiLinePasteWarning": false,
+        "window.zoomLevel": 1,
+        "git.enableSmartCommit": true,
+        "vim.easymotion": true,
+        "vim.incsearch": true,
+        "vim.useSystemClipboard": true,
+        "vim.useCtrlKeys": true,
+        "vim.hlsearch": true,
+        "workbench.sideBar.location": "right",
+        "editor.lineNumbers": "relative",
+        "editor.minimap.enabled": false,
+        "vim.insertModeKeyBindings": [
+          {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+          }
+      ],
+        "terminal.external.windowsExec": "C:\\Users\\Jazic\\AppData\\Local\\Microsoft\\WindowsApps\\wt.exe",
+        "terminal.integrated.defaultProfile.windows": "Windows Terminal",
+        "vim.leader": " ",
+        "vim.leaderModes": ["normal", "visual"],
+        "vim.handleKeys": {
+          "<Space>": false
+        },
+        "files.associations": {
+          "*.ps1": "powershell"
+        }
+      
+      }
