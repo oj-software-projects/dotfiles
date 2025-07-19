@@ -1,0 +1,5 @@
+managed:
+  - source: keybindings.json.tmpl
+    target: "{{ (index .vscode_keybindings_target .chezmoi.os) }}"
+  - source: settings.json.tmpl
+    target: "{{ (index .vscode_settings_target .chezmoi.os) }}"

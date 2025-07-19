@@ -1,0 +1,9 @@
+data:
+  vscode_keybindings_target:
+    windows: "{{ .chezmoi.homeDir }}\\AppData\\Roaming\\Code\\User\\keybindings.json"
+    darwin: "{{ .chezmoi.homeDir }}/Library/Application Support/Code/User/keybindings.json"
+    linux: "{{ .chezmoi.homeDir }}/.config/Code/User/keybindings.json"
+  vscode_settings_target:
+    windows: "{{ .chezmoi.homeDir }}\\AppData\\Roaming\\Code\\User\\settings.json"
+    darwin: "{{ .chezmoi.homeDir }}/Library/Application Support/Code/User/settings.json"
+    linux: "{{ .chezmoi.homeDir }}/.config/Code/User/settings.json"
