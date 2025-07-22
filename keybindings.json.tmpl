@@ -1,23 +1,19 @@
 [
-  // Navigation & Window Management
   { "key": "ctrl+h", "command": "workbench.action.focusLeftGroup" },
   { "key": "ctrl+l", "command": "workbench.action.focusRightGroup" },
   { "key": "ctrl+k", "command": "workbench.action.focusAboveGroup" },
   { "key": "ctrl+j", "command": "workbench.action.focusBelowGroup" },
 
-  // Navigation wie LazyVim
   { "key": "ctrl+o", "command": "workbench.action.navigateBack", "when": "editorTextFocus" },
   { "key": "ctrl+i", "command": "workbench.action.navigateForward", "when": "editorTextFocus" },
 
   { "key": "shift+l", "command": "workbench.action.nextEditorInGroup", "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)" },
   { "key": "shift+h", "command": "workbench.action.previousEditorInGroup", "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)" },
 
-  // Editor Tabs
   { "key": "J", "command": "editor.action.moveLinesDownAction", "when": "editorTextFocus && vim.mode == 'Visual'" },
   { "key": "K", "command": "editor.action.moveLinesUpAction", "when": "editorTextFocus && vim.mode == 'Visual'" },
   { "key": "shift+k", "command": "editor.action.showHover", "when": "vim.mode == 'Normal' && editorTextFocus" },
 
-  // File Explorer (SideBar)
   { "key": "r", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" },
   { "key": "d", "command": "deleteFile", "when": "filesExplorerFocus && !inputFocus" },
   { "key": "a", "command": "explorer.newFile", "when": "filesExplorerFocus && !inputFocus" },
@@ -26,10 +22,8 @@
   { "key": "p", "command": "filesExplorer.paste", "when": "filesExplorerFocus && !inputFocus" },
   { "key": "x", "command": "filesExplorer.cut", "when": "filesExplorerFocus && !inputFocus" },
 
-  // Terminal & Git
   { "key": "ctrl+t", "command": "workbench.action.terminal.toggleTerminal", "when": "terminalFocus && !terminalTextSelected" },
 
-  // VS Code Defaults & Misc
   { "key": "ctrl+shift+p", "command": "workbench.action.showCommands" },
   { "key": "ctrl+s", "command": "workbench.action.files.save", "when": "editorTextFocus && !editorReadonly" },
   { "key": "ctrl+b", "command": "scrollPageUp", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },

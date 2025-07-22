@@ -35,7 +35,6 @@
   "vim.leaderModes": ["normal", "visual"],
 
   "vim.normalModeKeyBindingsNonRecursive": [
-    // Leader/Space-Mappings
     { "before": ["<leader>", "\\"], "commands": ["workbench.action.splitEditorRight"] },
     { "before": ["<leader>", "w", "h"], "commands": ["workbench.action.splitEditorRight"] },
     { "before": ["<leader>", "-"], "commands": ["workbench.action.splitEditorDown"] },
@@ -72,7 +71,6 @@
     { "before": ["<leader>", "g", "g"], "commands": ["workbench.action.terminal.sendSequence"], "args": { "text": "wt -d ${fileDirname} lazygit\r" } },
     { "before": ["<leader>", "s", "c"], "commands": ["workbench.action.showCommands"] },
 
-    // LazyVim "goto" Mappings
     { "before": ["g", "d"], "commands": ["editor.action.revealDefinition"] },
     { "before": ["g", "D"], "commands": ["editor.action.goToDeclaration"] },
     { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
@@ -84,7 +82,6 @@
     { "before": ["g", "j"], "commands": ["cursorDown"] },
     { "before": ["g", ";"], "commands": ["workbench.action.navigateBack"] },
 
-    // Diagnostics & Problems
     { "before": ["]", "d"], "commands": ["editor.action.marker.next"] },
     { "before": ["[", "d"], "commands": ["editor.action.marker.prev"] },
     { "before": ["]", "e"], "commands": ["editor.action.marker.nextInFiles"] },
@@ -92,7 +89,6 @@
     { "before": ["]", "q"], "commands": ["workbench.action.problems.focus"] },
     { "before": ["[", "q"], "commands": ["workbench.action.problems.focus"] },
 
-    // Navigation wie LazyVim (Ctrl+o/i)
     { "before": ["<C-o>"], "commands": ["workbench.action.navigateBack"] },
     { "before": ["<C-i>"], "commands": ["workbench.action.navigateForward"] }
   ],
