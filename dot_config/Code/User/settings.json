@@ -52,6 +52,7 @@
     { "before": ["<leader>", "f", "f"], "commands": ["workbench.action.quickOpen"] },
     { "before": ["<leader>", "f", "r"], "commands": ["workbench.action.showAllEditors"] },
     { "before": ["<leader>", "f", "t"], "commands": ["workbench.action.terminal.new"] },
+    { "before": ["<leader>", "f", "n"], "commands": ["workbench.action.files.newUntitledFile"] },
     { "before": ["<leader>", "g", "m"], "commands": ["workbench.action.gotoSymbol"] },
     { "before": ["<leader>", "g", "d"], "commands": ["editor.action.revealDefinition"] },
     { "before": ["<leader>", "g", "r"], "commands": ["editor.action.goToReferences"] },
@@ -68,6 +69,7 @@
     { "before": ["<leader>", "p", "v"], "commands": ["workbench.action.files.revealInExplorer"] },
     { "before": ["<leader>", "t", "n"], "commands": ["workbench.action.terminal.newWithCwd"], "args": { "cwd": "${fileDirname}" } },
     { "before": ["<leader>", "t", "t"], "commands": ["workbench.action.terminal.focus"] },
+    { "before": ["<leader>", "t", "x"], "commands": ["workbench.action.terminal.kill"] },
     { "before": ["<leader>", "g", "g"], "commands": ["workbench.action.terminal.sendSequence"], "args": { "text": "wt -d ${fileDirname} lazygit\r" } },
     { "before": ["<leader>", "s", "c"], "commands": ["workbench.action.showCommands"] },
 
