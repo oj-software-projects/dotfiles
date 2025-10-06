@@ -1,4 +1,4 @@
-k" LazyVim key mappings for Jetbrains IDEs.
+" LazyVim key mappings for Jetbrains IDEs.
 
 " LazyVim default settings
 " https://www.lazyvim.org/configuration/general
@@ -32,12 +32,10 @@ set clipboard+=unnamedplus
 " https://github.com/mikeslattery/nvim-defaults.vim/blob/main/plugin/.vimrc
 
 set backspace=indent,eol,start
-set formatoptions=tcqj
 set listchars=tab:>\ ,trail:-,nbsp:+
 set shortmess=filnxtToOF
 
 " Enable plugin behavior
-
 " https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
 " https://www.lazyvim.org/plugins
 
@@ -45,20 +43,13 @@ set shortmess=filnxtToOF
 Plug 'tpope/vim-commentary'
 " s action, such as cs"' (replace " with '), ds" (unquote)
 Plug 'tpope/vim-surround'
-" Enable the whichkey plugin, available on Jetbrains marketplace
-"set which-key
 " Extended matching.  A Neovim default plugin.
 set matchit
-
-" Key maps
-
-" https://www.lazyvim.org/configuration/keymaps
-
+set NERDTree
 " To track Action-IDs
 " :action VimFindActionIdAction
 
 " General Keymaps
-
 " Go to Left Window
 nmap <C-h> <C-w>h
 " Go to Lower Window
@@ -67,14 +58,6 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 " Go to Right Window
 nmap <C-l> <C-w>l
-" Increase Window Height
-nmap <C-Up> <Action>(IncrementWindowHeight)
-" Decrease Window Height
-nmap <C-Down> <Action>(DecrementWindowHeight)
-" Decrease Window Width
-nmap <C-Left> <Action>(DecrementWindowWidth)
-" Increase Window Width
-nmap <C-Right> <Action>(IncrementWindowWidth)
 " Move Down
 nmap <A-j> <Action>(MoveLineDown)
 imap <A-j> <Esc><Action>(MoveLineDown)i
@@ -85,14 +68,6 @@ imap <A-k> <Esc><Action>(MoveLineUp)i
 nmap <S-h> <Action>(PreviousTab)
 " Next Buffer
 nmap <S-l> <Action>(NextTab)
-" Prev Buffer (alternative)
-nmap [b <Action>(PreviousTab)
-" Next Buffer (alternative)
-nmap ]b <Action>(NextTab)
-" Switch to Other Buffer
-nnoremap <leader>bb <C-^>
-" Switch to Other Buffer (alternative)
-nnoremap <leader>` <C-^>
 " Delete Buffer
 nmap <leader>bd <Action>(CloseContent)
 " Delete Buffer and Window
@@ -102,8 +77,6 @@ nmap <leader>bo <Action>(CloseAllEditorsButActive)
 " Escape and Clear hlsearch
 nmap <esc> :nohlsearch<CR>
 nmap <leader>ur :nohlsearch<CR>
-" Keywordprg
-nmap <leader>K :help<space><C-r><C-w><CR>
 " Add Comment Below
 nmap gco o<c-o>gcc
 " Add Comment Above
@@ -116,28 +89,12 @@ nmap <leader>fn <Action>(NewElementSamePlace)
 nmap <leader>xl <Action>(ActivateProblemsViewToolWindow)
 " Quickfix List
 nmap <leader>xq <Action>(ActivateProblemsViewToolWindow)
-" Previous Quickfix
-nmap [q <Action>(GotoPreviousError)
-" Next Quickfix
-nmap ]q <Action>(GotoNextError)
 " Format
 nmap <leader>cf <Action>(ReformatCode)
 nmap <leader>gq <Action>(HideActiveWindow)
 vmap <leader>cf <Action>(Format)
 " Line Diagnostics
 nmap <leader>cd <Action>(ActivateProblemsViewToolWindow)
-" Next Diagnostic
-nmap ]d <Action>(GotoNextError)
-" Prev Diagnostic
-nmap [d <Action>(GotoPreviousError)
-" Next Error
-nmap ]e <Action>(GotoNextError)
-" Prev Error
-nmap [e <Action>(GotoPreviousError)
-" Next Warning
-nmap ]w <Action>(GotoNextError)
-" Prev Warning
-nmap [w <Action>(GotoPreviousError)
 " Toggle Auto Format (Global)
 nmap <leader>ub :echo 'There is no equivalent mapping for Toggle Auto Format.'<cr>
 " Toggle Auto Format (Buffer)
@@ -160,20 +117,17 @@ nmap <leader>uT :echo 'There is no equivalent mapping for Toggle Treesitter High
 nmap <leader>ub <Action>(QuickChangeScheme)
 " Toggle Inlay Hints
 nmap <leader>uh <Action>(ToggleInlayHintsGloballyAction)
-" Lazygit (Root Dir)
-nmap <leader>gg <Action>(ActivateCommitToolWindow)
-" Lazygit (cwd)
-nmap <leader>gG <Action>(ActivateCommitToolWindow)
-" Git Blame Line
-nmap <leader>gb <Action>(Annotate)
-" Git Browse
-nmap <leader>gB <Action>(Vcs.Show.Log)
+
+" Checkout (Branch wechseln)
+map <Leader>go <Action>(GitCheckoutFromInputAction)
+
+" Commit (Checkin)
+map <Leader>gC <Action>(CheckinProject)
+
 " Lazygit Current File History
 nmap <leader>gf <Action>(Vcs.ShowTabbedFileHistory)
 " Lazygit Log
 nmap <leader>gl <Action>(Vcs.Show.Log)
-" Lazygit Log (cwd)
-nmap <leader>gL <Action>(Vcs.Show.Log)
 " Quit All
 nmap <leader>qq <Action>(Exit)
 " Inspect Pos
@@ -198,7 +152,6 @@ nmap <leader><bar> <c-w>v
 nmap <leader>wd <Action>(CloseContent)
 " Toggle Maximize
 nmap <leader>wm <Action>(ToggleDistractionFreeMode)
-
 " Tabs are treated as saved layouts
 
 " Last Tab
@@ -252,10 +205,6 @@ nmap <leader>cA <Action>(ShowIntentionActions)
 nmap ]] <Action>(GotoNextError)
 " Prev Reference
 nmap [[ <Action>(GotoPreviousError)
-" Next Reference (alternative)
-nmap <a-n> <Action>(GotoNextError)
-" Prev Reference (alternative)
-nmap <a-p> <Action>(GotoPreviousError)
 
 " BUFferline
 
@@ -300,22 +249,18 @@ nmap <leader>/ <Action>(FindInPath)
 nmap <leader>: :history<cr>
 " Buffers
 nmap <leader>fb <Action>(Switcher)
-" Find Config File
-nmap <leader>fc <Action>(GotoFile)
 " Find Files (Root Dir) (alternative)
 nmap <leader>ff <Action>(GotoFile)
 " Find Files (cwd)
-nmap <leader>fF <Action>(GotoFile)
-" Find Files (git-files)
 nmap <leader>fg <Action>(GotoFile)
 " Recent
 nmap <leader>fr <Action>(RecentFiles)
-" Recent (cwd)
-nmap <leader>fR <Action>(RecentFiles)
 " Commits
 nmap <leader>gc <Action>(Vcs.Show.Log)
 " Status
 nmap <leader>gs <Action>(Vcs.Show.Log)
+map <leader>gd :action Compare.LastVersion<cr>
+map <leader>gD :action Compare.Selected<cr>
 " Registers
 nmap <leader>s" :registers<cr>
 " Auto Commands
@@ -355,16 +300,9 @@ nmap <leader>sq <Action>(ActivateProblemsViewToolWindow)
 nmap <leader>sR :echo 'Not yet implmented.'<cr>
 " Goto Symbol
 nmap <leader>ss <Action>(GotoSymbol)
-" Goto Symbol (Workspace)
-nmap <leader>sS <Action>(GotoSymbol)
 " Word (Root Dir)
 nmap <leader>sw <Action>(FindWordAtCaret)
-" Word (cwd)
-nmap <leader>sW <Action>(FindWordAtCaret)
-" Selection (Root Dir)
-vmap <leader>sw <Action>(FindWordAtCaret)
 " Selection (cwd)
-vmap <leader>sW <Action>(FindWordAtCaret)
 nmap <leader>sH <Action>(HighlightUsagesInFile)
 " Colorscheme with Preview
 nmap <leader>uC <Action>(QuickChangeScheme)
@@ -388,8 +326,12 @@ nmap <leader>dg :echo 'Not yet implemented.'<cr>
 nmap <leader>di <Action>(StepInto)
 " Down
 nmap <leader>dj <Action>(GotoNextError)
+nmap <a-n> <Action>(GotoNextError)
 " Up
+" Prev Reference (alternative)
 nmap <leader>dk <Action>(GotoPreviousError)
+nmap <a-p> <Action>(GotoPreviousError)
+
 " Run Last
 nmap <leader>dl <Action>(Debug)
 " Step Out
@@ -469,7 +411,6 @@ nnoremap Q @@
 " There are several more Neovim mappings that need to be ported.
 noremap <leader>vt :echo "Leader key works!!!"<CR>
 noremap <leader>vv :source ~/.ideavimrc<cr>:echo "file reloaded"<cr>
-nmap <leader>gq <Action>(HideActiveWindow)
 
 " Back / Forward
 nmap <C-o> <Action>(Back)
@@ -496,16 +437,31 @@ vmap <leader>cw <Action>(SurroundWith)
 " Window splits
 map <leader>ww <Action>(Unsplit)
 nnoremap <leader>- :split<CR>
+nnoremap <leader>wh :split<CR>
 noremap <leader>\ :vsplit<CR>
+noremap <leader>wv :vsplit<CR>
+nnoremap <leader>wp :action MoveEditorToOppositeTabGroup<cr>
+" nnoremap <Leader>ww :action EditSourceInNewWindow<cr>
 
 
 " Git
-nmap <leader>vc :action CheckinProject<CR>
-nmap <leader>vm :action Git.ContextMenu<CR>
-nmap <leader>vh :action Vcs.ShowHistory<CR>
-
+nmap <leader>gg <Action>(Git.ContextMenu)
+nmap <leader>gd <Action>(Compare.LastVersion)
+nmap <leader>gD <Action>(Compare.Selected)
+nmap <leader>gl <Action>(Vcs.Show.Log)
+nmap <leader>gw <Action>(ActivateCommitToolWindow)
+map <leader>gb <Action>(Git.Branches)
+nmap <leader>gc <Action>(CheckinProject)
+map <Leader>gf <Action>(Git.Fetch)
+map <Leader>gP <Action>(Vcs.UpdateProject)   " Pull
+map <Leader>gp <Action>(Vcs.Push)
 
 " Code stuff
 nmap <leader>in :action Inline<CR>
 vmap <leader>in :action Inline<CR>
 nmap <leader>cg :action Generate<CR>
+
+" Methode springen (komfortabel für QWERTZ)
+nmap <leader>mn <Action>(MethodDown)
+nmap <leader>mp <Action>(MethodUp)
+nmap <leader>mf <Action>(FileStructurePopup)
