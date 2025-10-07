@@ -1,8 +1,5 @@
 " LazyVim key mappings for Jetbrains IDEs.
 
-" LazyVim default settings
-" https://www.lazyvim.org/configuration/general
-
 let mapleader=" "
 let maplocalleader="\\"
 
@@ -18,12 +15,11 @@ set scrolloff=4
 set shiftround
 " Columns of context
 set sidescrolloff=8
-" which-key says to set this high, or set notimeout
 set timeoutlen=10000
 set notimeout
 set undolevels=10000
-" Disable line wrap
 set nowrap
+set wrapscan
 " use system clipboard
 set clipboard+=unnamedplus
 
@@ -43,13 +39,12 @@ set shortmess=filnxtToOF
 Plug 'tpope/vim-commentary'
 " s action, such as cs"' (replace " with '), ds" (unquote)
 Plug 'tpope/vim-surround'
-" Extended matching.  A Neovim default plugin.
-set matchit
-set NERDTree
-" To track Action-IDs
-" :action VimFindActionIdAction
 
 " General Keymaps
+
+nnoremap Y y$
+nnoremap Q @@
+
 " Go to Left Window
 nmap <C-h> <C-w>h
 " Go to Lower Window
@@ -58,12 +53,6 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 " Go to Right Window
 nmap <C-l> <C-w>l
-" Move Down
-nmap <A-j> <Action>(MoveLineDown)
-imap <A-j> <Esc><Action>(MoveLineDown)i
-" Move Up
-nmap <A-k> <Action>(MoveLineUp)
-imap <A-k> <Esc><Action>(MoveLineUp)i
 " Prev Buffer
 nmap <S-h> <Action>(PreviousTab)
 " Next Buffer
@@ -118,16 +107,6 @@ nmap <leader>ub <Action>(QuickChangeScheme)
 " Toggle Inlay Hints
 nmap <leader>uh <Action>(ToggleInlayHintsGloballyAction)
 
-" Checkout (Branch wechseln)
-map <Leader>go <Action>(GitCheckoutFromInputAction)
-
-" Commit (Checkin)
-map <Leader>gC <Action>(CheckinProject)
-
-" Lazygit Current File History
-nmap <leader>gf <Action>(Vcs.ShowTabbedFileHistory)
-" Lazygit Log
-nmap <leader>gl <Action>(Vcs.Show.Log)
 " Quit All
 nmap <leader>qq <Action>(Exit)
 " Inspect Pos
@@ -144,15 +123,6 @@ nmap <leader>fT <Action>(ActivateTerminalToolWindow)
 nmap <C-/> <Action>(ActivateTerminalToolWindow)
 " nmap <C-_> 'There is no equivalent mapping for <c-_>.'<cr>
 " Hide Terminal - terminal Mode maps not possible
-" Split Window Below.  :split<cr> doesn't work.
-nmap <leader>- <c-w>s
-" Split Window Right
-nmap <leader><bar> <c-w>v
-" Delete Window
-nmap <leader>wd <Action>(CloseContent)
-" Toggle Maximize
-nmap <leader>wm <Action>(ToggleDistractionFreeMode)
-" Tabs are treated as saved layouts
 
 " Last Tab
 nmap <leader><tab>l <Action>(StoreDefaultLayout)<Action>(ChangeToolWindowLayout)
@@ -206,30 +176,23 @@ nmap ]] <Action>(GotoNextError)
 " Prev Reference
 nmap [[ <Action>(GotoPreviousError)
 
-" BUFferline
-
-" Delete buffers to the left
+" Delete buffers
 nmap <leader>bl <Action>(CloseAllToTheLeft)
-" Toggle pin
 nmap <leader>bp <Action>(PinActiveTabToggle)
-" Delete Non-Pinned Buffers
 nmap <leader>bP <Action>(CloseAllUnpinnedEditors)
-" Delete buffers to the right
 nmap <leader>br <Action>(CloseAllToTheRight)
 
 " Neo-tree Keymaps
 
 " Buffer Explorer
 nmap <leader>be <Action>(ActivateProjectToolWindow)
-" Explorer NeoTree (Root Dir)
-nmap <leader>e <Action>(FileStructurePopup)
-" Explorer NeoTree (cwd)
-nmap <leader>E <Action>(SelectInProjectView)
-" Explorer NeoTree (Root Dir) (alternative)
-nmap <leader>fe <Action>(ActivateProjectToolWindow)
-" Explorer NeoTree (cwd) (alternative)
-nmap <leader>fE <Action>(ActivateProjectToolWindow)
-" Git Explorer
+" Öffnet oder fokussiert den Project View
+nmap <leader>e <Action>(ActivateProjectToolWindow)
+" Blendet den aktuell offenen Tool View aus (z. B. Project, Terminal, Commit)
+nmap <leader>ha <Action>(HideAllWindows)
+" Springt im Project View zu der Datei, die im Editor aktiv ist
+nmap <leader>pe <Action>(SelectInProjectView)
+" Öffnet die Git/VCS Ansicht (geht nur, wenn Git aktiviert ist)
 nmap <leader>ge <Action>(ActivateVersionControlToolWindow)
 
 " Notifications (noice, snacks)
@@ -255,12 +218,6 @@ nmap <leader>ff <Action>(GotoFile)
 nmap <leader>fg <Action>(GotoFile)
 " Recent
 nmap <leader>fr <Action>(RecentFiles)
-" Commits
-nmap <leader>gc <Action>(Vcs.Show.Log)
-" Status
-nmap <leader>gs <Action>(Vcs.Show.Log)
-map <leader>gd :action Compare.LastVersion<cr>
-map <leader>gD :action Compare.Selected<cr>
 " Registers
 nmap <leader>s" :registers<cr>
 " Auto Commands
@@ -358,21 +315,12 @@ nmap <leader>sT :echo 'Not yet implemented.'<cr>
 " Todo (Trouble)
 nmap <leader>xt :echo 'Not yet implemented.'<cr>
 " Todo/Fix/Fixme (Trouble)
-nmap <leader>xT :echo 'Not yet implemented.'<cr>
-" Previous Todo Comment
-nmap [t ?TODO<cr>
-" Next Todo Comment
-nmap ]t /TODO<cr>
-
-" DAP UI Keymaps
-
+nmap <leader>xT :echo 'Notyet implemented.'<cr>
 " Eval
 nmap <leader>de <Action>(EvaluateExpression)
 vmap <leader>de <Action>(EvaluateExpression)
 " Dap UI
 nmap <leader>du <Action>(ActivateDebugToolWindow)
-
-" Neotest Keymaps
 
 " Run Last
 nmap <leader>tl <Action>(Run)
@@ -400,11 +348,8 @@ nmap <leader>td <Action>(ChooseDebugConfiguration)
 " Neovim mappings
 " https://neovim.io/doc/user/vim_diff.html#_default-mappings
 
-nnoremap Y y$
 inoremap <C-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
-" Q isn't exactly the same.
-nnoremap Q @@
 "----------------------------------------------------
 " Custom Keybindings
 "----------------------------------------------------
@@ -441,21 +386,21 @@ nnoremap <leader>wh :split<CR>
 noremap <leader>\ :vsplit<CR>
 noremap <leader>wv :vsplit<CR>
 nnoremap <leader>wp :action MoveEditorToOppositeTabGroup<cr>
-" nnoremap <Leader>ww :action EditSourceInNewWindow<cr>
-
+nnoremap <Leader>we :action EditSourceInNewWindow<cr>
 
 " Git
-nmap <leader>gg <Action>(Git.ContextMenu)
+nmap <leader>gb <Action>(Git.Branches)
 nmap <leader>gd <Action>(Compare.LastVersion)
 nmap <leader>gD <Action>(Compare.Selected)
-nmap <leader>gl <Action>(Vcs.Show.Log)
-nmap <leader>gw <Action>(ActivateCommitToolWindow)
-map <leader>gb <Action>(Git.Branches)
 nmap <leader>gc <Action>(CheckinProject)
-map <Leader>gf <Action>(Git.Fetch)
-map <Leader>gP <Action>(Vcs.UpdateProject)   " Pull
-map <Leader>gp <Action>(Vcs.Push)
-
+nmap <leader>gf <Action>(Vcs.ShowTabbedFileHistory)
+nmap <Leader>gF <Action>(Git.Fetch)
+nmap <leader>gg <Action>(Git.ContextMenu)
+nmap <leader>gl <Action>(Vcs.Show.Log)
+nmap <Leader>go <Action>(GitCheckoutFromInputAction)
+nmap <Leader>gP <Action>(Vcs.UpdateProject)   " Pull
+nmap <Leader>gp <Action>(Vcs.Push)
+nmap <leader>gw <Action>(ActivateCommitToolWindow)
 " Code stuff
 nmap <leader>in :action Inline<CR>
 vmap <leader>in :action Inline<CR>
@@ -465,3 +410,8 @@ nmap <leader>cg :action Generate<CR>
 nmap <leader>mn <Action>(MethodDown)
 nmap <leader>mp <Action>(MethodUp)
 nmap <leader>mf <Action>(FileStructurePopup)
+" Matchit-Ersatz für IdeaVim
+nmap % <Action>(EditorMatchBrace)
+nmap <leader>% <Action>(EditorSelectMatchingElement)
+
+
