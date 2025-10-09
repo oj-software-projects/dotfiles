@@ -5,23 +5,21 @@ let maplocalleader="\\"
 
 " Confirm to save changes before exiting modified buffer
 set formatoptions=jcroqlnt
-" Print line number
 set number
-" Relative line numbers
 set relativenumber
-" Lines of context
 set scrolloff=4
-" Round indent
 set shiftround
-" Columns of context
 set sidescrolloff=8
 set timeoutlen=10000
 set notimeout
 set undolevels=10000
 set nowrap
 set wrapscan
-" use system clipboard
 set clipboard+=unnamedplus
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
 
 " Neovim settings that differ from Vim
 " https://neovim.io/doc/user/diff.html
@@ -35,13 +33,10 @@ set shortmess=filnxtToOF
 " https://github.com/JetBrains/ideavim/wiki/IdeaVim-Plugins
 " https://www.lazyvim.org/plugins
 
-" gcc and gc<action> mappings.
 Plug 'tpope/vim-commentary'
-" s action, such as cs"' (replace " with '), ds" (unquote)
 Plug 'tpope/vim-surround'
 
 " General Keymaps
-
 nnoremap Y y$
 nnoremap Q @@
 
@@ -143,9 +138,9 @@ nmap <leader><tab>f <Action>(StoreDefaultLayout)<Action>(ChangeToolWindowLayout)
 
 " Lsp Info
 nmap <leader>cc :echo 'There is no equivalent mapping for Lsp Info.'<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Goto Definition
 nmap gd <Action>(GotoDeclaration)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " References
 nmap gr <Action>(FindUsages)
 " Goto Implementation
