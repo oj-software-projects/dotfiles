@@ -1,7 +1,7 @@
 " LazyVim key mappings for Jetbrains IDEs.
 
 let mapleader=" "
-let maplocalleader="\\"
+let maplocalleader="\"
 
 " Confirm to save changes before exiting modified buffer
 set formatoptions=jcroqlnt
@@ -12,6 +12,7 @@ set shiftround
 set sidescrolloff=8
 set timeoutlen=10000
 set notimeout
+set which-key
 set undolevels=10000
 set nowrap
 set wrapscan
@@ -138,7 +139,7 @@ nmap <leader><tab>f <Action>(StoreDefaultLayout)<Action>(ChangeToolWindowLayout)
 
 " Lsp Info
 nmap <leader>cc :echo 'There is no equivalent mapping for Lsp Info.'<cr>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Goto Definition
 nmap gd <Action>(GotoDeclaration)
 " References
@@ -302,7 +303,7 @@ nmap <leader>dt <Action>(Stop)
 nmap <leader>dw :echo 'There is no equivalent mapping for Widgets.'<cr>
 
 " Todo-comments Keymaps
-
+s
 " Todo
 nmap <leader>st oTODO<esc>gcc
 " Todo/Fix/Fixme
@@ -364,22 +365,30 @@ vnoremap K :m '<-2<CR>gv=gv
 map <leader>oi :action OptimizeImports<CR>
 map <leader>pv :action SelectInProjectView<CR>
 "map <leader>/ :action CommentByBlockComment<CR>
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Mappings - General Navigation
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Escape mappings
 inoremap jk <Esc>
 imap jj <Esc>
 nmap <leader>dv <Action>(ActivateDatabaseToolWindow)
 xnoremap <leader>p "_d
 vmap <leader>cw <Action>(SurroundWith)
+nnoremap <leader>ya ggVGy
+nnoremap <leader>yp vap"+y
+" Ganze Funktion (Zeilen von { bis }) kopieren
+nnoremap <leader>yf [{V%y
+" Ganze Funktion ausschneiden
+nnoremap <leader>df [{V%d
+" Ganze Funktion formatieren (wenn du gq nutzt)
+nnoremap <leader>= [{V%gq
 
 " Window splits
 map <leader>ww <Action>(Unsplit)
 nnoremap <leader>- :split<CR>
 nnoremap <leader>wh :split<CR>
-noremap <leader>\ :vsplit<CR>
-noremap <leader>wv :vsplit<CR>
+nnoremap <leader>\ :vsplit<CR>
+nnoremap <leader>wv :vsplit<CR>
 nnoremap <leader>wp :action MoveEditorToOppositeTabGroup<cr>
 nnoremap <Leader>we :action EditSourceInNewWindow<cr>
 
@@ -409,4 +418,185 @@ nmap <leader>mf <Action>(FileStructurePopup)
 nmap % <Action>(EditorMatchBrace)
 nmap <leader>% <Action>(EditorSelectMatchingElement)
 
+"----------------------------------------------------
+" Which-key descriptions
+"----------------------------------------------------
+let g:WhichKeyDesc_space = "<Space> Find"
+let g:WhichKeyDesc_comma = "<Space>, Buffers"
+let g:WhichKeyDesc_slash = "<Space>/ Grep"
+let g:WhichKeyDesc_colon = "<Space>: History"
 
+let g:WhichKeyDesc_b = "<Space>b Buffer"
+let g:WhichKeyDesc_bd = "<Space>bd Delete"
+let g:WhichKeyDesc_bD = "<Space>bD Delete & Close"
+let g:WhichKeyDesc_bl = "<Space>bl Close Left"
+let g:WhichKeyDesc_bo = "<Space>bo Close Others"
+let g:WhichKeyDesc_bp = "<Space>bp Pin"
+let g:WhichKeyDesc_bP = "<Space>bP Close Unpinned"
+let g:WhichKeyDesc_br = "<Space>br Close Right"
+let g:WhichKeyDesc_be = "<Space>be Explorer"
+
+let g:WhichKeyDesc_c = "<Space>c Code"
+let g:WhichKeyDesc_ca = "<Space>ca Action"
+let g:WhichKeyDesc_cA = "<Space>cA Source Action"
+let g:WhichKeyDesc_cd = "<Space>cd Diagnostics"
+let g:WhichKeyDesc_cf = "<Space>cf Format"
+let g:WhichKeyDesc_cg = "<Space>cg Generate"
+let g:WhichKeyDesc_cr = "<Space>cr Rename"
+let g:WhichKeyDesc_cR = "<Space>cR Rename File"
+let g:WhichKeyDesc_cw = "<Space>cw Surround With"
+
+let g:WhichKeyDesc_d = "<Space>d Debug"
+let g:WhichKeyDesc_da = "<Space>da Run with Args"
+let g:WhichKeyDesc_db = "<Space>db Toggle Breakpoint"
+let g:WhichKeyDesc_dB = "<Space>dB Conditional Breakpoint"
+let g:WhichKeyDesc_dc = "<Space>dc Continue"
+let g:WhichKeyDesc_dC = "<Space>dC Run to Cursor"
+let g:WhichKeyDesc_de = "<Space>de Evaluate"
+let g:WhichKeyDesc_di = "<Space>di Step Into"
+let g:WhichKeyDesc_dj = "<Space>dj Next Error"
+let g:WhichKeyDesc_dk = "<Space>dk Prev Error"
+let g:WhichKeyDesc_dl = "<Space>dl Run Last"
+let g:WhichKeyDesc_do = "<Space>do Step Out"
+let g:WhichKeyDesc_dO = "<Space>dO Step Over"
+let g:WhichKeyDesc_dp = "<Space>dp Pause"
+let g:WhichKeyDesc_dr = "<Space>dr REPL"
+let g:WhichKeyDesc_ds = "<Space>ds Session"
+let g:WhichKeyDesc_dt = "<Space>dt Terminate"
+let g:WhichKeyDesc_du = "<Space>du UI"
+let g:WhichKeyDesc_dv = "<Space>dv Database"
+let g:WhichKeyDesc_dw = "<Space>dw Widgets"
+
+let g:WhichKeyDesc_e = "<Space>e Explorer"
+
+let g:WhichKeyDesc_f = "<Space>f File/Find"
+let g:WhichKeyDesc_fa = "<Space>fa Goto Action"
+let g:WhichKeyDesc_fb = "<Space>fb Buffers"
+let g:WhichKeyDesc_ff = "<Space>ff Find File"
+let g:WhichKeyDesc_fg = "<Space>fg Find File (cwd)"
+let g:WhichKeyDesc_fn = "<Space>fn New File"
+let g:WhichKeyDesc_fr = "<Space>fr Recent"
+let g:WhichKeyDesc_ft = "<Space>ft Terminal"
+let g:WhichKeyDesc_fT = "<Space>fT Terminal (cwd)"
+
+let g:WhichKeyDesc_g = "<Space>g Git"
+let g:WhichKeyDesc_gb = "<Space>gb Branches"
+let g:WhichKeyDesc_gc = "<Space>gc Commit"
+let g:WhichKeyDesc_gC = "<Space>gC Checkin Project"
+let g:WhichKeyDesc_gd = "<Space>gd Diff"
+let g:WhichKeyDesc_gD = "<Space>gD Diff Selected"
+let g:WhichKeyDesc_ge = "<Space>ge Explorer"
+let g:WhichKeyDesc_gf = "<Space>gf File History"
+let g:WhichKeyDesc_gF = "<Space>gF Fetch"
+let g:WhichKeyDesc_gg = "<Space>gg Context Menu"
+let g:WhichKeyDesc_gl = "<Space>gl Log"
+let g:WhichKeyDesc_go = "<Space>go Checkout"
+let g:WhichKeyDesc_gp = "<Space>gp Push"
+let g:WhichKeyDesc_gP = "<Space>gP Pull"
+let g:WhichKeyDesc_gq = "<Space>gq Hide Active Window"
+let g:WhichKeyDesc_gs = "<Space>gs Status"
+let g:WhichKeyDesc_gw = "<Space>gw Commit Window"
+
+let g:WhichKeyDesc_h = "<Space>h Hide"
+let g:WhichKeyDesc_ha = "<Space>ha Hide All Windows"
+
+let g:WhichKeyDesc_i = "<Space>i"
+let g:WhichKeyDesc_in = "<Space>in Inline"
+
+let g:WhichKeyDesc_l = "<Space>l Lazy"
+let g:WhichKeyDesc_L = "<Space>L Changelog"
+
+let g:WhichKeyDesc_m = "<Space>m Move/Method"
+let g:WhichKeyDesc_mf = "<Space>mf File Structure"
+let g:WhichKeyDesc_mn = "<Space>mn Next Method"
+let g:WhichKeyDesc_mp = "<Space>mp Prev Method"
+
+let g:WhichKeyDesc_o = "<Space>o"
+let g:WhichKeyDesc_oi = "<Space>oi Optimize Imports"
+
+let g:WhichKeyDesc_p = "<Space>p Project/Paste"
+let g:WhichKeyDesc_pe = "<Space>pe Select in Project"
+let g:WhichKeyDesc_pv = "<Space>pv Select in Project"
+
+let g:WhichKeyDesc_q = "<Space>q Quit"
+let g:WhichKeyDesc_qq = "<Space>qq Quit All"
+
+let g:WhichKeyDesc_s = "<Space>s Search"
+let g:WhichKeyDesc_s_quote = '<Space>s" Registers'
+let g:WhichKeyDesc_sa = "<Space>sa Auto Commands"
+let g:WhichKeyDesc_sb = "<Space>sb Buffers"
+let g:WhichKeyDesc_sc = "<Space>sc History"
+let g:WhichKeyDesc_sC = "<Space>sC Commands"
+let g:WhichKeyDesc_sd = "<Space>sd Doc Diagnostics"
+let g:WhichKeyDesc_sD = "<Space>sD Workspace Diagnostics"
+let g:WhichKeyDesc_sg = "<Space>sg Grep"
+let g:WhichKeyDesc_sG = "<Space>sG Grep (cwd)"
+let g:WhichKeyDesc_sh = "<Space>sh Help"
+let g:WhichKeyDesc_sH = "<Space>sH Highlight Selection"
+let g:WhichKeyDesc_sj = "<Space>sj Jumplist"
+let g:WhichKeyDesc_sk = "<Space>sk Keymaps"
+let g:WhichKeyDesc_sl = "<Space>sl Location List"
+let g:WhichKeyDesc_sm = "<Space>sm Marks"
+let g:WhichKeyDesc_sM = "<Space>sM Man Pages"
+let g:WhichKeyDesc_snd = "<Space>snd Notifications"
+let g:WhichKeyDesc_so = "<Space>so Options"
+let g:WhichKeyDesc_sq = "<Space>sq Quickfix"
+let g:WhichKeyDesc_sR = "<Space>sR Resume"
+let g:WhichKeyDesc_ss = "<Space>ss Symbols"
+let g:WhichKeyDesc_st = "<Space>st TODO"
+let g:WhichKeyDesc_sT = "<Space>sT TODO/FIXME"
+let g:WhichKeyDesc_sw = "<Space>sw Word"
+
+let g:WhichKeyDesc_t = "<Space>t Test"
+let g:WhichKeyDesc_td = "<Space>td Debug Nearest"
+let g:WhichKeyDesc_tl = "<Space>tl Run Last"
+let g:WhichKeyDesc_tO = "<Space>tO Toggle Output"
+let g:WhichKeyDesc_tr = "<Space>tr Run Nearest"
+let g:WhichKeyDesc_ts = "<Space>ts Summary"
+let g:WhichKeyDesc_tS = "<Space>tS Stop"
+let g:WhichKeyDesc_tt = "<Space>tt Run File"
+let g:WhichKeyDesc_tT = "<Space>tT Run All"
+let g:WhichKeyDesc_tw = "<Space>tw Watch"
+
+let g:WhichKeyDesc_u = "<Space>u UI/Util"
+let g:WhichKeyDesc_ub = "<Space>ub Toggle Background"
+let g:WhichKeyDesc_uC = "<Space>uC Colorscheme"
+let g:WhichKeyDesc_ud = "<Space>ud Toggle Diagnostics"
+let g:WhichKeyDesc_uh = "<Space>uh Toggle Inlay Hints"
+let g:WhichKeyDesc_ui = "<Space>ui Inspect"
+let g:WhichKeyDesc_uI = "<Space>uI Inspect Tree"
+let g:WhichKeyDesc_ul = "<Space>ul Toggle Line Numbers"
+let g:WhichKeyDesc_uL = "<Space>uL Toggle Relative Numbers"
+let g:WhichKeyDesc_un = "<Space>un Notifications"
+let g:WhichKeyDesc_ur = "<Space>ur Clear Highlight"
+let g:WhichKeyDesc_us = "<Space>us Toggle Spelling"
+let g:WhichKeyDesc_uw = "<Space>uw Toggle Wrap"
+
+let g:WhichKeyDesc_v = "<Space>v Vim"
+let g:WhichKeyDesc_vt = "<Space>vt Test Leader"
+let g:WhichKeyDesc_vv = "<Space>vv Reload vimrc"
+
+let g:WhichKeyDesc_w = "<Space>w Window"
+let g:WhichKeyDesc_we = "<Space>we Edit in New Window"
+let g:WhichKeyDesc_wh = "<Space>wh Split Horizontal"
+let g:WhichKeyDesc_wm = "<Space>wm Toggle Maximize"
+let g:WhichKeyDesc_wp = "<Space>wp Move to Opposite"
+let g:WhichKeyDesc_wv = "<Space>wv Split Vertical"
+let g:WhichKeyDesc_ww = "<Space>ww Unsplit"
+
+let g:WhichKeyDesc_y = "<Space>y Yank"
+let g:WhichKeyDesc_ya = "<Space>ya Yank All"
+let g:WhichKeyDesc_yp = "<Space>yp Yank block"
+let g:WhichKeyDesc_yf = "<Space>yf Yank function"
+let g:WhichKeyDesc_df = "<Space>df delete function"
+let g:WhichKeyDesc_equal = "= format function"
+
+
+
+let g:WhichKeyDesc_x = "<Space>x Diagnostics"
+let g:WhichKeyDesc_xl = "<Space>xl Location List"
+let g:WhichKeyDesc_xq = "<Space>xq Quickfix"
+
+let g:WhichKeyDesc_percent = "<Space>% Select Matching"
+let g:WhichKeyDesc_minus = "<Space>- Split"
+let g:WhichKeyDesc_backslash = "<Space>\ VSplit"
