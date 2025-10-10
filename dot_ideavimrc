@@ -10,7 +10,7 @@ set relativenumber
 set scrolloff=4
 set shiftround
 set sidescrolloff=8
-set timeoutlen=10000
+set timeoutlen=800
 set notimeout
 set which-key
 set undolevels=10000
@@ -390,7 +390,8 @@ nnoremap <leader>wh :split<CR>
 nnoremap <leader>\ :vsplit<CR>
 nnoremap <leader>wv :vsplit<CR>
 nnoremap <leader>wp :action MoveEditorToOppositeTabGroup<cr>
-nnoremap <Leader>we :action EditSourceInNewWindow<cr>
+nnoremap <leader>we :action EditSourceInNewWindow<cr>
+nmap <leader>wm <Action>(ToggleDistractionFreeMode)
 
 " Git
 nmap <leader>gb <Action>(Git.Branches)
@@ -591,8 +592,6 @@ let g:WhichKeyDesc_yf = "<Space>yf Yank function"
 let g:WhichKeyDesc_df = "<Space>df delete function"
 let g:WhichKeyDesc_equal = "= format function"
 
-
-
 let g:WhichKeyDesc_x = "<Space>x Diagnostics"
 let g:WhichKeyDesc_xl = "<Space>xl Location List"
 let g:WhichKeyDesc_xq = "<Space>xq Quickfix"
@@ -600,3 +599,22 @@ let g:WhichKeyDesc_xq = "<Space>xq Quickfix"
 let g:WhichKeyDesc_percent = "<Space>% Select Matching"
 let g:WhichKeyDesc_minus = "<Space>- Split"
 let g:WhichKeyDesc_backslash = "<Space>\ VSplit"
+
+" Which-Key: z-Prefix (Folding)
+"let g:WhichKeyDesc_z  = "z Folding"
+"let g:WhichKeyDesc_zc = "Fold close (zc)"
+"let g:WhichKeyDesc_zo = "Fold open (zo)"
+"let g:WhichKeyDesc_za = "Fold toggle (za)"
+"let g:WhichKeyDesc_zM = "Fold ALL close (zM)"
+"let g:WhichKeyDesc_zR = "Fold ALL open (zR)"
+"let g:WhichKeyDesc_zC = "Fold recursive close (zC)"
+"let g:WhichKeyDesc_zO = "Fold recursive open (zO)"
+"let g:WhichKeyDesc_zv = "Reveal cursor fold (zv)"
+
+" Nur als Cheat-Sheet unter <leader>z anzeigen
+let g:WhichKeyDesc_z_leader = "<Space>z Folding"
+let g:WhichKeyDesc_zc_leader = "<Space>zc Fold close"
+let g:WhichKeyDesc_zo_leader = "<Space>zo Fold open"
+let g:WhichKeyDesc_za_leader = "<Space>za Fold toggle"
+let g:WhichKeyDesc_zM_leader = "<Space>zM Fold ALL close"
+let g:WhichKeyDesc_zR_leader = "<Space>zR Fold ALL open"
