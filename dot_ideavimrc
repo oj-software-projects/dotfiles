@@ -403,7 +403,7 @@ nmap <Leader>gF <Action>(Git.Fetch)
 nmap <leader>gg <Action>(Git.ContextMenu)
 nmap <leader>gl <Action>(Vcs.Show.Log)
 nmap <Leader>go <Action>(GitCheckoutFromInputAction)
-nmap <Leader>gp <Action>(Vcs.UpdateProject)   " Pull
+nmap <Leader>gp <Action>(Vcs.UpdateProject)
 nmap <Leader>gP <Action>(Vcs.Push)
 nmap <leader>gw <Action>(ActivateCommitToolWindow)
 " Code stuff
@@ -492,8 +492,8 @@ let g:WhichKeyDesc_gF = "<Space>gF Fetch"
 let g:WhichKeyDesc_gg = "<Space>gg Context Menu"
 let g:WhichKeyDesc_gl = "<Space>gl Log"
 let g:WhichKeyDesc_go = "<Space>go Checkout"
-let g:WhichKeyDesc_PP = "<Space>gp Push"
-let g:WhichKeyDesc_gp = "<Space>gP Pull"
+let g:WhichKeyDesc_PP = "<Space>gP Push"
+let g:WhichKeyDesc_gp = "<Space>gp Pull"
 let g:WhichKeyDesc_gq = "<Space>gq Hide Active Window"
 let g:WhichKeyDesc_gs = "<Space>gs Status"
 let g:WhichKeyDesc_gw = "<Space>gw Commit Window"
