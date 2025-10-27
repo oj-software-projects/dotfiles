@@ -7,7 +7,7 @@ vim.keymap.set("n", "L", ":bnext<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "H", ":bprev<CR>", { noremap = true, silent = true })
 vim.keymap.set("i", "jj", "<ESC>", { noremap = true, silent = true })
 -- im Normal-Mode <leader>gm → nur Funktionen/Methoden im aktuellen File per fzf-lua
-vim.keymap.set("n", "<leader>gm", function()
+vim.keymap.set("n", "<leader>mf", function()
   require("fzf-lua").lsp_document_symbols({
     symbols = { "Function", "Method" },
   })
