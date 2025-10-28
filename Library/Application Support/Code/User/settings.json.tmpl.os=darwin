@@ -7,7 +7,7 @@
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
-  "workbench.sideBar.location": "right",
+  "workbench.sideBar.location": "left",
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "vim.insertModeKeyBindings": [
