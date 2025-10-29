@@ -98,7 +98,7 @@ config.key_tables = {
 -- ---------- Look & feel ----------
 config.color_scheme = "catppuccin-mocha"
 config.automatically_reload_config = true
--- config.window_decorations = "NONE"
+config.window_decorations = "TITLE | RESIZE"
 -- leave zellij examples commented; default_prog is handled above
 
 config.font = wezterm.font({
@@ -140,12 +140,12 @@ local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 config.background = {
 	{
 		source = { Color = bg },
-		opacity = 0.75,
+		opacity = 1.0,
 		width = "100%",
 		height = "100%",
 	},
 }
-config.macos_window_background_blur = 30
+config.macos_window_background_blur = 0
 
 config.colors = {
 	tab_bar = {
