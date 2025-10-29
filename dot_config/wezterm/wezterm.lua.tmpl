@@ -5,6 +5,28 @@ local act = wezterm.action
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- ---------- Default shell per OS (chezmoi-templated) ----------
+-- We set default_prog conditionally. On Windows force PowerShell 7.
+-- On macOS/Linux prefer pwsh if available, otherwise sensible fallbacks.
+{{- $os := .chezmoi.os -}}
+{{- if eq $os "windows" }}
+config.default_prog = { "C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe", "-NoLogo" }
+{{- else if eq $os "darwin" }}
+{{- if (lookPath "pwsh") }}
+config.default_prog = { "pwsh", "-NoLogo" }
+{{- else }}
+config.default_prog = { "/bin/zsh", "-l" }
+{{- end }}
+{{- else }}  -- linux and others
+{{- if (lookPath "pwsh") }}
+config.default_prog = { "pwsh", "-NoLogo" }
+{{- else if (lookPath "zsh") }}
+config.default_prog = { "/bin/zsh", "-l" }
+{{- else }}
+config.default_prog = { "/bin/bash", "-l" }
+{{- end }}
+{{- end }}
+
 -- ---------- Quick Select ----------
 config.quick_select_patterns = {
 	"=([A-Za-z0-9_]+)",
@@ -87,7 +109,7 @@ config.key_tables = {
 config.color_scheme = "catppuccin-mocha"
 config.automatically_reload_config = true
 -- config.window_decorations = "NONE"
--- config.default_prog = {"/opt/homebrew/bin/zellij", "-l", "welcome"}
+-- leave zellij examples commented; default_prog is handled above
 
 config.font = wezterm.font({
 	family = "SauceCodePro Nerd Font",
