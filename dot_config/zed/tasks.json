@@ -1,0 +1,7 @@
+[
+  {
+    "name": "lazygit",
+    "command": "lazygit",
+    "cwd": "${workspaceFolder}"
+  }
+]
