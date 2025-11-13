@@ -1,5 +1,4 @@
 " LazyVim key mappings for Jetbrains IDEs.
-
 let mapleader=" "
 let maplocalleader="\"
 
@@ -400,7 +399,8 @@ nmap <leader>gD <Action>(Compare.Selected)
 nmap <leader>gc <Action>(CheckinProject)
 nmap <leader>gf <Action>(Vcs.ShowTabbedFileHistory)
 nmap <Leader>gF <Action>(Git.Fetch)
-nmap <leader>gg <Action>(Git.ContextMenu)
+nmap <leader>gg <Action>(TUILauncher.lazygit)
+nmap <leader>gm <Action>(Git.ContextMenu)
 nmap <leader>gl <Action>(Vcs.Show.Log)
 nmap <Leader>go <Action>(GitCheckoutFromInputAction)
 nmap <Leader>gp <Action>(Vcs.UpdateProject)
@@ -489,8 +489,9 @@ let g:WhichKeyDesc_gD = "<Space>gD Diff Selected"
 let g:WhichKeyDesc_ge = "<Space>ge Explorer"
 let g:WhichKeyDesc_gf = "<Space>gf File History"
 let g:WhichKeyDesc_gF = "<Space>gF Fetch"
-let g:WhichKeyDesc_gg = "<Space>gg Context Menu"
+let g:WhichKeyDesc_gg = "<Space>gg lazygit toggle"
 let g:WhichKeyDesc_gl = "<Space>gl Log"
+let g:WhichKeyDesc_gm = "<Space>gm Context Menu"
 let g:WhichKeyDesc_go = "<Space>go Checkout"
 let g:WhichKeyDesc_PP = "<Space>gP Push"
 let g:WhichKeyDesc_gp = "<Space>gp Pull"
