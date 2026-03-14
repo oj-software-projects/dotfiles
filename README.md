@@ -1,15 +1,16 @@
 # Dotfiles
 
-Personal configuration files (dotfiles) for macOS, Windows, and Linux. This repository is structured to mirror the target locations on different operating systems, allowing for seamless cross-platform management.
+Personal configuration files (dotfiles) for macOS, Windows, and Linux. This repository is structured to manage configurations across multiple operating systems, dealing with the different paths and variations required by each platform.
 
 ## Cross-Platform Structure
 
-To accommodate the differences between macOS, Windows, and Linux, the repository is organized into system-specific directories. Some configurations (like VS Code settings) are stored redundantly to ensure each platform receives the correct, optimized version for its specific environment.
+To accommodate the differences between macOS, Windows, and Linux, the repository is organized into directories that reflect the structure of the respective operating system. Files might be duplicated across these OS-specific directories if the configuration requires slight variations depending on the system (e.g., different terminal paths or keyboard shortcuts in VS Code).
 
-*   **`.config/`**: Standard Unix-like configuration directory, primarily used for Linux and shared configurations across platforms.
-*   **`Library/Application Support/`**: macOS-specific configuration paths.
-*   **`windows_appdata/Roaming/`**: Windows-specific configuration paths.
+*   **`.config/`**: Standard Unix-like configuration directory, used primarily for Linux, macOS, and tools that share the exact same configuration across platforms.
+*   **`Library/Application Support/`**: macOS-specific configuration paths (e.g., VS Code on Mac).
+*   **`windows_appdata/Roaming/`**: Windows-specific configuration paths (e.g., VS Code on Windows).
 *   **`.ideavimrc`**: Global configuration for Vim emulation in JetBrains IDEs.
+*   **`.zshrc` & `.p10k.zsh`**: Zsh terminal configuration and Powerlevel10k theme settings.
 
 ## Applications & Tools
 
@@ -34,24 +35,23 @@ The following applications are configured in this repository:
     *   **Website**: [https://github.com/JetBrains/ideavim](https://github.com/JetBrains/ideavim)
     *   **Config**: `.ideavimrc`
 
-## Installation
+## Usage
 
-Configurations should be linked to their respective system locations. 
+Instead of using symlinks, these files are intended to be copied or managed by a dotfiles manager (like Chezmoi or a custom script) to their respective locations on each operating system. Because paths and settings differ, ensure you deploy the files from the directory corresponding to your current OS.
 
-### macOS
-```bash
-# Example for VS Code
-ln -s ~/dotfiles/Library/Application\ Support/Code/User/settings.json ~/Library/Application\ Support/Code/User/settings.json
-```
+### Zsh & Powerlevel10k Setup (macOS / Linux)
 
-### Windows (PowerShell)
-```powershell
-# Example for VS Code
-New-Item -ItemType SymbolicLink -Path "$env:APPDATA\Code\User\settings.json" -Target "$HOME\dotfiles\windows_appdata\Roaming\Code\User\settings.json"
-```
+If you want to use the included terminal configuration (`.zshrc` and `.p10k.zsh`), you need to install Oh My Zsh and the Powerlevel10k theme first.
 
-### Linux
-```bash
-# Example for Neovim
-ln -s ~/dotfiles/.config/nvim ~/.config/nvim
-```
+1.  **Install Oh My Zsh:**
+    ```bash
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    ```
+2.  **Install Powerlevel10k theme:**
+    ```bash
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    ```
+3.  **Apply Configurations:**
+    Copy the `.zshrc` and `.p10k.zsh` files from this repository to your home directory (`~/`).
+4.  **Restart Terminal:** 
+    Restart your terminal or run `source ~/.zshrc`. If prompted by the Powerlevel10k configuration wizard, you can usually abort it since your `.p10k.zsh` already contains your preferences.
