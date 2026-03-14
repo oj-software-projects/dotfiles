@@ -210,7 +210,7 @@ nmap <leader>fb <Action>(Switcher)
 " Find Files (Root Dir) (alternative)
 nmap <leader>ff <Action>(GotoFile)
 " Find Files (cwd)
-nmap <leader>fg <Action>(GotoFile)
+nmap <leader>fg <Action>(FindInPath)
 " Recent
 nmap <leader>fr <Action>(RecentFiles)
 " Registers
@@ -474,7 +474,7 @@ let g:WhichKeyDesc_f = "<Space>f File/Find"
 let g:WhichKeyDesc_fa = "<Space>fa Goto Action"
 let g:WhichKeyDesc_fb = "<Space>fb Buffers"
 let g:WhichKeyDesc_ff = "<Space>ff Find File"
-let g:WhichKeyDesc_fg = "<Space>fg Find File (cwd)"
+let g:WhichKeyDesc_fg = "<Space>fg Find in File"
 let g:WhichKeyDesc_fn = "<Space>fn New File"
 let g:WhichKeyDesc_fr = "<Space>fr Recent"
 let g:WhichKeyDesc_ft = "<Space>ft Terminal"

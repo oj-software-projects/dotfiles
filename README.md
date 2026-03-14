@@ -1,65 +1,57 @@
-# Dotfiles Managed with chezmoi
+# Dotfiles
 
-This repository is the source state for my cross-platform dotfiles, managed with [chezmoi](https://www.chezmoi.io/). The layout follows chezmoi conventions (`dot_` prefix for dotfiles, OS-specific suffixes, templates, etc.), letting the same repo provision macOS, Linux, and Windows machines.
+Personal configuration files (dotfiles) for macOS, Windows, and Linux. This repository is structured to mirror the target locations on different operating systems, allowing for seamless cross-platform management.
 
-## Managed Targets by Platform
+## Cross-Platform Structure
 
-- **Shared across platforms**
-  - `~/.config/wezterm/wezterm.lua` generated from `dot_config/wezterm/wezterm.lua.tmpl` (default shell adapts per OS).
-  - `~/.config/Code/User/{settings,keybindings}.json` used primarily on Linux.
-  - The full Neovim setup in `~/.config/nvim` (LazyVim-based) including plugin configuration, stylua formatting, and helper utilities.
-  - `~/.ideavimrc` IDE keybinding configuration.
+To accommodate the differences between macOS, Windows, and Linux, the repository is organized into system-specific directories. Some configurations (like VS Code settings) are stored redundantly to ensure each platform receives the correct, optimized version for its specific environment.
 
-- **macOS**
-  - `~/Library/Application Support/Code/User/{settings,keybindings}.json` via templates with the `.tmpl.os=darwin` suffix.
-  - Helper script `scripts/copy-mac-vscode-settings.sh` to pull VS Code preferences from the live system back into the source tree.
+*   **`.config/`**: Standard Unix-like configuration directory, primarily used for Linux and shared configurations across platforms.
+*   **`Library/Application Support/`**: macOS-specific configuration paths.
+*   **`windows_appdata/Roaming/`**: Windows-specific configuration paths.
+*   **`.ideavimrc`**: Global configuration for Vim emulation in JetBrains IDEs.
 
-- **Windows**
-  - `%AppData%\Code\User\{settings,keybindings}.json` via `.tmpl.os=windows` templates.
-  - Helper script `scripts/copy-windows-vscode-settings.ps1` to sync VS Code settings from a Windows machine.
+## Applications & Tools
 
-- **Linux**
-  - Shares the common VS Code path under `~/.config/Code/User/`.
-  - Script `scripts/copy-linux-vscode-settings.sh` keeps the repository in sync with a Linux install.
+The following applications are configured in this repository:
 
-## Typical Workflow
+*   **VS Code**: A powerful, extensible code editor with support for virtually every programming language.
+    *   **Website**: [https://code.visualstudio.com/](https://code.visualstudio.com/)
+    *   **Config**: `Library/Application Support/Code/User/` (Mac), `windows_appdata/Roaming/Code/User/` (Windows)
+*   **Neovim**: A hyper-extensible Vim-based text editor focused on extensibility and usability.
+    *   **Website**: [https://neovim.io/](https://neovim.io/)
+    *   **Config**: `.config/nvim/`
+*   **WezTerm**: A GPU-accelerated cross-platform terminal emulator and multiplexer.
+    *   **Website**: [https://wezfurlong.org/wezterm/](https://wezfurlong.org/wezterm/)
+    *   **Config**: `.config/wezterm/`
+*   **Yazi**: A terminal file manager written in Rust, based on async I/O.
+    *   **Website**: [https://yazi-rs.github.io/](https://yazi-rs.github.io/)
+    *   **Config**: `.config/yazi/`
+*   **Zed**: A high-performance, multiplayer code editor built for speed.
+    *   **Website**: [https://zed.dev/](https://zed.dev/)
+    *   **Config**: `.config/zed/`
+*   **IdeaVim**: A Vim emulation plugin for IDEs based on the IntelliJ platform.
+    *   **Website**: [https://github.com/JetBrains/ideavim](https://github.com/JetBrains/ideavim)
+    *   **Config**: `.ideavimrc`
 
+## Installation
+
+Configurations should be linked to their respective system locations. 
+
+### macOS
 ```bash
-# Inspect pending changes that would be applied to the destination system
-chezmoi diff
-
-# Apply all managed files to the current machine
-chezmoi apply
-
-# Show which files chezmoi currently tracks
-chezmoi managed
+# Example for VS Code
+ln -s ~/dotfiles/Library/Application\ Support/Code/User/settings.json ~/Library/Application\ Support/Code/User/settings.json
 ```
 
-## Applying Individual Configurations
+### Windows (PowerShell)
+```powershell
+# Example for VS Code
+New-Item -ItemType SymbolicLink -Path "$env:APPDATA\Code\User\settings.json" -Target "$HOME\dotfiles\windows_appdata\Roaming\Code\User\settings.json"
+```
 
-Use `chezmoi apply --source-path <entry>` with the source-state path (the path shown by `chezmoi managed`). A few common examples:
-
-- **WezTerm (all platforms)**
-  ```bash
-  chezmoi apply --source-path dot_config/wezterm/wezterm.lua.tmpl
-  ```
-
-- **VS Code settings**
-  - Linux:
-    ```bash
-    chezmoi apply --source-path dot_config/Code/User/settings.json
-    chezmoi apply --source-path dot_config/Code/User/keybindings.json
-    ```
-  - macOS:
-    ```bash
-    chezmoi apply --source-path 'Library/Application Support/Code/User/settings.json.tmpl.os=darwin'
-    chezmoi apply --source-path 'Library/Application Support/Code/User/keybindings.json.tmpl.os=darwin'
-    ```
-  - Windows (PowerShell):
-    ```powershell
-    chezmoi apply --source-path 'AppData/Roaming/Code/User/settings.json.tmpl.os=windows'
-    chezmoi apply --source-path 'AppData/Roaming/Code/User/keybindings.json.tmpl.os=windows'
-    ```
-
-For any other managed file, copy its source-state path from `chezmoi managed` and pass it to `chezmoi apply --source-path`.
-
+### Linux
+```bash
+# Example for Neovim
+ln -s ~/dotfiles/.config/nvim ~/.config/nvim
+```

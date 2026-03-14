@@ -8,14 +8,7 @@ local config = wezterm.config_builder()
 -- ---------- Default shell per OS (chezmoi-templated) ----------
 -- Windows forces PowerShell 7; macOS prefers zsh when present.
 -- Other systems fall back to wezterm defaults by not setting default_prog.
-{{- $os := .chezmoi.os -}}
-{{- if eq $os "windows" }}
-config.default_prog = { "C:\\\\Program Files\\\\PowerShell\\\\7\\\\pwsh.exe", "-NoLogo" }
-{{- else if eq $os "darwin" }}
-{{- if (lookPath "zsh") }}
 config.default_prog = { "/bin/zsh", "-l" }
-{{- end }}
-{{- end }}
 
 -- ---------- Quick Select ----------
 config.quick_select_patterns = {
@@ -91,6 +84,7 @@ config.key_tables = {
 		-- pane resize (Shift + H/J/K/L)
 		{ key = "H", action = act.AdjustPaneSize({ "Left", 3 }) },
 		{ key = "J", action = act.AdjustPaneSize({ "Down", 22 }) },
+		{ key = "K", action = act.AdjustPaneSize({ "Up", 22 }) },
 		{ key = "L", action = act.AdjustPaneSize({ "Right", 3 }) },
 	},
 }

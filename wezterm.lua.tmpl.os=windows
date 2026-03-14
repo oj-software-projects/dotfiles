@@ -1,4 +1,0 @@
--- Delegate to the shared wezterm config under ~/.config/wezterm/wezterm.lua
-local wezterm = require("wezterm")
-
-return dofile(wezterm.home_dir .. "/.config/wezterm/wezterm.lua")
