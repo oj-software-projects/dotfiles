@@ -59,7 +59,7 @@ nmap <leader>bD <Action>(CloseContent)
 " Delete Other Buffers
 nmap <leader>bo <Action>(CloseAllEditorsButActive)
 " Escape and Clear hlsearch
-nmap <esc> :nohlsearch<CR>
+nmap <esc> :nohlsearch<CR><Action>(EditorEscape)
 nmap <leader>ur :nohlsearch<CR>
 " Add Comment Below
 nmap gco o<c-o>gcc
