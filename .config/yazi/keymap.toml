@@ -1,0 +1,55 @@
+
+[[mgr.prepend_keymap]]
+on = [ "g", "g" ]
+run = "shell --block lazygit ."
+desc = "Run lazygit"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "i" ]
+run = "shell --orphan 'idea .'"
+desc = "Run IntelliJ"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "z" ]
+run = "shell --orphan 'zed .'"
+desc = "Run Zed"
+
+[[mgr.prepend_keymap]]
+on = [ "<Right>" ]
+run = "plugin smart-enter"
+desc = "Smart enter"
+
+[[mgr.prepend_keymap]]
+on = [ "<Enter>" ]
+run = "plugin smart-enter"
+desc = "Smart enter"
+
+[[mgr.prepend_keymap]]
+on = [ "!" ]
+run = 'shell "$SHELL" --block'
+desc = "Open shell here"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "f" ]
+run = "shell --orphan 'open .'"
+desc = "Open finder here"
+
+[[mgr.prepend_keymap]]
+on = [ "m" ]
+run = "plugin bookmarks save"
+desc = "Save current position as a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "'" ]
+run = "plugin bookmarks jump"
+desc = "Jump to a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "d" ]
+run = "plugin bookmarks delete"
+desc = "Delete a bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "D" ]
+run = "plugin bookmarks delete_all"
+desc = "Delete all bookmarks"
