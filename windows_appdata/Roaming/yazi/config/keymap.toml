@@ -90,6 +90,6 @@ run = "plugin yamb -- rename_by_key"
 desc = "Rename bookmark by key"
 
 [[mgr.prepend_keymap]]
-on = [ "u", "R" ]
+on = [ "b", "R" ]
 run = "plugin yamb -- rename_by_fzf"
 desc = "Rename bookmark by fzf"
