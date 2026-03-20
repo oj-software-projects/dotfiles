@@ -1,0 +1,95 @@
+
+[[mgr.prepend_keymap]]
+on = [ "g", "g" ]
+run = "shell --block lazygit ."
+desc = "Run lazygit"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "i" ]
+run = "shell --orphan 'idea .'"
+desc = "Run IntelliJ"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "z" ]
+run = "shell --orphan 'zed .'"
+desc = "Run Zed"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "v" ]
+run = "shell --orphan 'code .'"
+desc = "Run VSCode"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "n" ]
+run = "shell --orphan 'notepad++.exe .'"
+desc = "Run Notepad"
+
+[[mgr.prepend_keymap]]
+on = [ "<Right>" ]
+run = "plugin smart-enter"
+desc = "Smart enter"
+
+[[mgr.prepend_keymap]]
+on = [ "<Enter>" ]
+run = "plugin smart-enter"
+desc = "Smart enter"
+
+[[mgr.prepend_keymap]]
+on = [ "!", "w" ]
+run  = 'shell --orphan "wezterm start --cwd ."'
+desc = "Open wezterm here"
+
+[[mgr.prepend_keymap]]
+on   = [ "!", "c" ]
+run  = 'shell --orphan "start cmd.exe /k"'
+desc = "Open CMD here"
+
+[[mgr.prepend_keymap]]
+on   = [ "!", "t" ]
+run  = 'shell --orphan "wt.exe -d ."'
+desc = "Open Windows Terminal here"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "f" ]
+run = "shell --orphan 'open .'"
+desc = "Open finder here"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "a" ]
+run = "plugin yamb -- save"
+desc = "Add bookmark"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "b" ]
+run = "plugin yamb -- jump_by_key"
+desc = "Jump bookmark by key"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "f" ]
+run = "plugin yamb -- jump_by_fzf"
+desc = "Jump bookmark by fzf"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "d" ]
+run = "plugin yamb -- delete_by_key"
+desc = "Delete bookmark by key"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "D" ]
+run = "plugin yamb -- delete_by_fzf"
+desc = "Delete bookmark by fzf"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "A" ]
+run = "plugin yamb -- delete_all"
+desc = "Delete all bookmarks"
+
+[[mgr.prepend_keymap]]
+on = [ "b", "r" ]
+run = "plugin yamb -- rename_by_key"
+desc = "Rename bookmark by key"
+
+[[mgr.prepend_keymap]]
+on = [ "u", "R" ]
+run = "plugin yamb -- rename_by_fzf"
+desc = "Rename bookmark by fzf"
