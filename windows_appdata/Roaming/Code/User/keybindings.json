@@ -1,19 +1,42 @@
+
+// keybindings.json — IntelliJ‑artige Navigation, sauber kommentiert (JSONC erlaubt)
+// Hinweis: <Space> bleibt für VSCodeVim als Leader-Taste frei. Kein Which‑Key.
+
 [
+  // ======================
+  // Globale Navigation zwischen Editor-Gruppen (Pane-Fokus)
+  // ======================
   { "key": "ctrl+h", "command": "workbench.action.focusLeftGroup" },
   { "key": "ctrl+l", "command": "workbench.action.focusRightGroup" },
   { "key": "ctrl+k", "command": "workbench.action.focusAboveGroup" },
   { "key": "ctrl+j", "command": "workbench.action.focusBelowGroup" },
 
+  // ======================
+  // Back / Forward (entspricht IdeaVim <C-o> / <C-i>)
+  // ======================
   { "key": "ctrl+o", "command": "workbench.action.navigateBack", "when": "editorTextFocus" },
   { "key": "ctrl+i", "command": "workbench.action.navigateForward", "when": "editorTextFocus" },
 
+  // ======================
+  // Tabs / Editor-Hopping innerhalb der Gruppe
+  // ======================
   { "key": "shift+l", "command": "workbench.action.nextEditorInGroup", "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)" },
   { "key": "shift+h", "command": "workbench.action.previousEditorInGroup", "when": "(vim.mode == 'Normal' || vim.mode == 'Visual') && (editorTextFocus || !inputFocus)" },
 
+  // ======================
+  // Visual Mode: Zeilen verschieben (J/K)
+  // ======================
   { "key": "J", "command": "editor.action.moveLinesDownAction", "when": "editorTextFocus && vim.mode == 'Visual'" },
   { "key": "K", "command": "editor.action.moveLinesUpAction", "when": "editorTextFocus && vim.mode == 'Visual'" },
+
+  // ======================
+  // Hover / Quick Info (entspricht gK)
+  // ======================
   { "key": "shift+k", "command": "editor.action.showHover", "when": "vim.mode == 'Normal' && editorTextFocus" },
 
+  // ======================
+  // Datei-Explorer (Sidebar): Nur aktiv, wenn der Explorer Fokus hat
+  // ======================
   { "key": "r", "command": "renameFile", "when": "filesExplorerFocus && !inputFocus" },
   { "key": "d", "command": "deleteFile", "when": "filesExplorerFocus && !inputFocus" },
   { "key": "a", "command": "explorer.newFile", "when": "filesExplorerFocus && !inputFocus" },
@@ -22,10 +45,16 @@
   { "key": "p", "command": "filesExplorer.paste", "when": "filesExplorerFocus && !inputFocus" },
   { "key": "x", "command": "filesExplorer.cut", "when": "filesExplorerFocus && !inputFocus" },
 
+  // ======================
+  // Terminal
+  // ======================
   { "key": "ctrl+t", "command": "workbench.action.terminal.toggleTerminal", "when": "terminalFocus && !terminalTextSelected" },
 
+  // ======================
+  // Essentials, die sinnvoll bleiben
+  // ======================
   { "key": "ctrl+shift+p", "command": "workbench.action.showCommands" },
-  { "key": "ctrl+s", "command": "workbench.action.files.save", "when": "editorTextFocus && !editorReadonly" },
-  { "key": "ctrl+b", "command": "scrollPageUp", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" },
-  { "key": "ctrl+d", "command": "scrollPageDown", "when": "editorTextFocus && vim.active && vim.mode == 'Normal'" }
+  { "key": "ctrl+s", "command": "workbench.action.files.save", "when": "editorTextFocus && !editorReadonly" }
+
+  // Ende. Kein Which‑Key, keine Space-Belegung hier.
 ]
