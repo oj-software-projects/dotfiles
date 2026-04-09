@@ -140,4 +140,4 @@ export SDKMAN_DIR="$HOME/.sdkman"
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/oliverjazic/.lmstudio/bin"
 # End of LM Studio CLI section
-
+eval "$(zoxide init zsh)"

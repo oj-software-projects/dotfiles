@@ -1,5 +1,4 @@
 -- ~/.config/yazi/init.lua
-
 -- UI / Border setup
 require("full-border"):setup()
 
@@ -7,23 +6,20 @@ require("full-border"):setup()
 require("zoxide"):setup({
 	update_db = true,
 })
+-- You can configure your bookmarks by lua language
+local bookmarks = {}
 
--- ~/.config/yazi/init.lua
--- install: ya pkg add dedukun/bookmarks
-require("bookmarks"):setup({
-	last_directory = { enable = false, persist = false, mode = "dir" },
-	persist = "all",
-	desc_format = "full",
-	file_pick_mode = "parent",
-	custom_desc_input = false,
-	show_keys = false,
-	notify = {
-		enable = false,
-		timeout = 1,
-		message = {
-			new = "New bookmark '<key>' -> '<folder>'",
-			delete = "Deleted bookmark in '<key>'",
-			delete_all = "Deleted all bookmarks",
-		},
-	},
-})
+local path_sep = package.config:sub(1, 1)
+require("yamb"):setup {
+  -- Optional, the path ending with path seperator represents folder.
+  bookmarks = bookmarks,
+  -- Optional, recieve notification everytime you jump.
+  jump_notify = true,
+  -- Optional, the cli of fzf.
+  cli = "fzf",
+  -- Optional, a string used for randomly generating keys, where the preceding characters have higher priority.
+  keys = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  -- Optional, the path of bookmarks
+  path = (ya.target_family() == "windows" and os.getenv("APPDATA") .. "\\yazi\\config\\bookmark") or
+        (os.getenv("HOME") .. "/.config/yazi/bookmark"),
+}
