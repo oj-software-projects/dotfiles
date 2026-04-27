@@ -1,3 +1,12 @@
-# yazi.toml
 [mgr]
 show_hidden = true
+
+[preview]
+tab_size = 2
+max_width = 1000
+max_height = 1000
+
+[plugin]
+prepend_previewers = [
+  { mime = "application/{xml,xml-dtd,xhtml+xml,rss+xml,atom+xml}", run = "code" },
+]
