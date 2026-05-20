@@ -8,7 +8,7 @@
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "diffEditor.hideUnchangedRegions.enabled": true,
-  "workbench.colorTheme": "Default Dark+",
+  "workbench.colorTheme": "Dark+",
 
   // External terminal
   "terminal.external.windowsExec": "C:\\\\Users\\\\Jazic\\\\AppData\\\\Local\\\\Microsoft\\\\WindowsApps\\\\wt.exe",
@@ -117,5 +117,13 @@
   "security.workspace.trust.untrustedFiles": "open",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "chat.tools.urls.autoApprove": {
+    "https://code.visualstudio.com": true,
+    "https://github.com/microsoft/vscode/wiki/*": true,
+    "https://yazi-rs.github.io": {
+      "approveRequest": false,
+      "approveResponse": true
+    }
   }
 }

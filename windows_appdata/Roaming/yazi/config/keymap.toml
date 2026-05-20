@@ -15,6 +15,16 @@ run = "shell --orphan 'zed .'"
 desc = "Run Zed"
 
 [[mgr.prepend_keymap]]
+on = [ "g", "p" ]
+run = "plugin zip"
+desc = "Zip hovered file/folder"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "P" ]
+run = "plugin zip -- selected"
+desc = "Zip selected files"
+
+[[mgr.prepend_keymap]]
 on = [ "g", "v" ]
 run = "shell --orphan 'code .'"
 desc = "Run VSCode"
@@ -23,6 +33,16 @@ desc = "Run VSCode"
 on = [ "g", "n" ]
 run = "shell --orphan 'notepad++.exe .'"
 desc = "Run Notepad"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "e" ]
+run = "plugin explorer -- reveal"
+desc = "Reveal current file in Explorer"
+
+[[mgr.prepend_keymap]]
+on = [ "g", "o" ]
+run = "plugin explorer -- open"
+desc = "Open current directory in Explorer"
 
 [[mgr.prepend_keymap]]
 on = [ "<Right>" ]
