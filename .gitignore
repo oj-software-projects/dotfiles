@@ -1,4 +1,33 @@
-windows_appdata/Roaming/yazi/state
-windows_appdata/Roaming/yazi/config/flavors/kanagawa.yazi
-windows_appdata/Roaming/yazi/config/plugins
-windows_appdata/Roaming/yazi/config/state
+# ==========================================
+# Globale OS-Dateien
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# Editor & Tool Caches / Lokale States
+# ==========================================
+
+# Neovim / LazyVim
+# Sperrdateien für Plugins sollten im Repo bleiben (lazy-lock.json), 
+# aber lokale Caches oder temporäre Files fliegen raus.
+apps/nvim/.repro/
+apps/nvim/undo/
+apps/nvim/swap/
+
+# Zed editor
+# Verhindert, dass die lokalen Konversationen und SQLite/MDB-Datenbanken hochgeladen werden
+apps/zed/conversations/
+apps/zed/prompts/*.mdb
+apps/zed/prompts/*.ldb
+
+# Yazi
+# Falls Yazi lokale Cache-Ordner oder Historien im Config-Verzeichnis ablegt
+apps/yazi/state/
+apps/yazi/cache/
+
+# VS Code
+# Falls VS Code lokale Backup-Dateien oder Workspaces anlegt
+apps/vscode/Backups/
+apps/vscode/WorkspaceStorage/

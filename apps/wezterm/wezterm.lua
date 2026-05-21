@@ -5,11 +5,6 @@ local act = wezterm.action
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- ---------- Default shell per OS (chezmoi-templated) ----------
--- Windows forces PowerShell 7; macOS prefers zsh when present.
--- Other systems fall back to wezterm defaults by not setting default_prog.
-config.default_prog = { "/bin/zsh", "-l" }
-
 -- ---------- Quick Select ----------
 config.quick_select_patterns = {
 	"=([A-Za-z0-9_]+)",
@@ -17,7 +12,7 @@ config.quick_select_patterns = {
 	"[%w%._%-%/]+%.%w+", -- simple filenames/paths
 	"%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x", -- UUID
 }
-
+wezterm.log_info("hello world! my name is " .. wezterm.hostname())
 -- ---------- Top-level keybindings ----------
 config.keys = {
 	{
@@ -84,16 +79,16 @@ config.key_tables = {
 		-- pane resize (Shift + H/J/K/L)
 		{ key = "H", action = act.AdjustPaneSize({ "Left", 3 }) },
 		{ key = "J", action = act.AdjustPaneSize({ "Down", 22 }) },
-		{ key = "K", action = act.AdjustPaneSize({ "Up", 22 }) },
 		{ key = "L", action = act.AdjustPaneSize({ "Right", 3 }) },
 	},
 }
 
 -- ---------- Look & feel ----------
-config.color_scheme = "catppuccin-mocha"
+-- config.color_scheme = "catppuccin-mocha"
+config.color_scheme = "Tokyo Night"
 config.automatically_reload_config = true
-config.window_decorations = "TITLE | RESIZE"
--- leave zellij examples commented; default_prog is handled above
+-- config.window_decorations = "NONE"
+-- config.default_prog = {"/opt/homebrew/bin/zellij", "-l", "welcome"}
 
 config.font = wezterm.font({
 	family = "SauceCodePro Nerd Font",
@@ -134,12 +129,12 @@ local SOLID_RIGHT_ARROW = wezterm.nerdfonts.pl_left_hard_divider
 config.background = {
 	{
 		source = { Color = bg },
-		opacity = 1.0,
+		opacity = 0.75,
 		width = "100%",
 		height = "100%",
 	},
 }
-config.macos_window_background_blur = 0
+config.macos_window_background_blur = 30
 
 config.colors = {
 	tab_bar = {
